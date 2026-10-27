@@ -1,0 +1,2 @@
+import {db} from '@/lib/db'; import {Card} from '@/components/Card';
+export default async function Latest(){const [m,s]=await Promise.all([db.movie.findMany({where:{published:true},orderBy:{publishedAt:'desc'},include:{genres:true}}),db.series.findMany({where:{published:true},orderBy:{publishedAt:'desc'},include:{genres:true}})]);return <main className="container"><section className="section"><h1>جدیدترین‌ها</h1><div className="grid">{m.map(x=><Card key={x.id} item={x} type="movie"/>)}{s.map(x=><Card key={x.id} item={x} type="series"/>)}</div></section></main>}

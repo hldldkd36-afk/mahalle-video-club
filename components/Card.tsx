@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export function Card({item,type}:{item:any,type:'movie'|'series'}){return <Link href={`/${type}/${item.slug}`} className="card"><img className="poster" src={item.posterUrl||'/poster-placeholder.svg'} alt={item.title}/><div className="pad"><span className="badge">{type==='movie'?'فیلم':'سریال'}</span><h3>{item.title}</h3><div className="muted">{item.year||'—'} · {item.country||'—'}</div></div></Link>}

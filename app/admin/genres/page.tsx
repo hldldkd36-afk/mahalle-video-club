@@ -1,0 +1,2 @@
+import {redirect} from 'next/navigation'; import {isAdmin} from '@/lib/auth'; import {db} from '@/lib/db';
+export default async function Genres(){if(!await isAdmin())redirect('/admin/login');const items=await db.genre.findMany({orderBy:{name:'asc'}});return <main className="admin"><aside className="side"><a href="/admin">داشبورد</a><a href="/admin/genres">ژانرها</a></aside><section className="main"><h1>ژانرها</h1><div className="grid">{items.map(x=><div className="card pad" key={x.id}>{x.name}</div>)}</div></section></main>}

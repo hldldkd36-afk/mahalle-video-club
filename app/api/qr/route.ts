@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server'; import QRCode from 'qrcode'; import {isAdmin} from '@/lib/auth';
+export async function GET(req:Request){if(!await isAdmin())return NextResponse.json({error:'Unauthorized'},{status:401});const u=new URL(req.url).searchParams.get('url');if(!u)return NextResponse.json({error:'url required'},{status:400});const png=await QRCode.toBuffer(u,{width:800,margin:2});return new NextResponse(png as any,{headers:{'Content-Type':'image/png','Content-Disposition':'inline; filename="mahalle-qr.png"'}})}

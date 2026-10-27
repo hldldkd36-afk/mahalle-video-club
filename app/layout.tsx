@@ -1,0 +1,3 @@
+import './globals.css'; import Link from 'next/link';
+export const metadata={title:'Mahalle | Video Club',description:'Mahalle video club streaming catalog'};
+export default function Layout({children}:{children:React.ReactNode}){return <html lang="fa" dir="rtl"><body><header className="nav"><div className="container navin"><Link href="/" className="brand">Mahalle 🎬</Link><nav className="links"><Link href="/latest">جدیدترین</Link><Link href="/iranian">ایرانی</Link><Link href="/foreign">خارجی</Link><Link href="/series">سریال‌ها</Link><Link href="/search">جستجو</Link></nav></div></header>{children}<footer className="footer"><div className="container">Mahalle Video Club — تماشای آنلاین محتوای مجاز</div></footer></body></html>}

@@ -1,0 +1,2 @@
+import {db} from '@/lib/db'; import {Card} from '@/components/Card';
+export default async function Foreign(){const items=await db.movie.findMany({where:{published:true,NOT:{country:{contains:'Iran',mode:'insensitive'}}},orderBy:{publishedAt:'desc'},include:{genres:true}});return <main className="container"><section className="section"><h1>فیلم خارجی</h1><div className="grid">{items.map(x=><Card key={x.id} item={x} type="movie"/>)}</div></section></main>}
